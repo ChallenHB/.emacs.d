@@ -10,6 +10,8 @@
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -73,7 +75,7 @@
 (defun my-clojure-hook-mode ()
   (clj-refactor-mode 1)
   (yas-minor-mode 1)
- (cljr-add-keybindings-with-prefix "C-c C-m"))
+  (cljr-add-keybindings-with-prefix "C-c C-n"))
 
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
@@ -91,6 +93,8 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
@@ -191,3 +195,6 @@
 
 ;; Update buffers without closing/opening them
 (global-auto-revert-mode t)
+
+;; Pin cider to a stable version
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
