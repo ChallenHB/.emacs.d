@@ -72,12 +72,10 @@
 
 (require 'clj-refactor)
 
-(defun my-clojure-hook-mode ()
-  (clj-refactor-mode 1)
-  (yas-minor-mode 1)
-  (cljr-add-keybindings-with-prefix "C-c C-n"))
-
-(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               (yas-minor-mode 1)
+                               (cljr-add-keybindings-with-prefix "C-c C-n")))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -93,8 +91,6 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
