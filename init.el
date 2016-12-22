@@ -61,14 +61,14 @@
     ;; project navigation
     projectile
 
-    ;; colorful parenthesis matching
     rainbow-delimiters
 
     ;; edit html tags like sexps
     tagedit
 
-    ;; git integration
-    magit))
+    magit
+
+    clj-refactor))
 
 (require 'clj-refactor)
 
