@@ -2,6 +2,21 @@
 ;; Packages
 ;;;;
 
+;; Fun with keybindings
+
+;; Window Sizing
+(global-set-key (kbd "C-c <left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-c <right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-c <down>") 'shrink-window)
+(global-set-key (kbd "C-c <up>") 'enlarge-window)
+
+;; Window navigation
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+
+
 ;; Define package repositories
 (require 'package)
 (add-to-list 'package-archives
@@ -68,7 +83,8 @@
 
     magit
 
-    clj-refactor))
+    clj-refactor
+    undo-tree))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -154,20 +170,6 @@
 
 ;; Load color themes
 (load-file "~/.emacs.d/themes/avk-darkblue-yellow-theme.el")
-
-;; Fun with keybindings
-
-;; Window Sizing
-(global-set-key (kbd "C-c <left>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-c <right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-c <down>") 'shrink-window)
-(global-set-key (kbd "C-c <up>") 'enlarge-window)
-
-;; Window navigation
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
-(global-set-key (kbd "C-x <right>") 'windmove-right)
-(global-set-key (kbd "C-x <left>") 'windmove-left)
 
 ;; Magit mode keybinding
 (global-set-key (kbd "C-x g") 'magit-status)
