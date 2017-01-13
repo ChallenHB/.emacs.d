@@ -16,6 +16,9 @@
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 
+;; Scrolling
+(global-set-key "\M-n" "\C-u1\C-v")
+(global-set-key "\M-p" "\C-u1\M-v")
 
 ;; Define package repositories
 (require 'package)
@@ -81,10 +84,17 @@
     ;; edit html tags like sexps
     tagedit
 
+    ;; git integration
     magit
 
+    ;; clj-refactoring->download from melpa-stable
     clj-refactor
-    undo-tree))
+
+    ;; Makes undoing way nicer
+    undo-tree
+    
+    ;; Autocomplete
+    company))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -119,6 +129,8 @@
 ;;
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+(global-company-mode)
 
 ;;;;
 ;; Customization
@@ -160,7 +172,7 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (cider clj-refactor undo-tree cider-profile tagedit smex rainbow-delimiters projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking))))
+    (company cider clj-refactor undo-tree cider-profile tagedit smex rainbow-delimiters projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -168,15 +180,14 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; Suppressing cider start banner
+(setq cider-repl-display-help-banner nil)
+
 ;; Load color themes
 (load-file "~/.emacs.d/themes/avk-darkblue-yellow-theme.el")
 
 ;; Magit mode keybinding
 (global-set-key (kbd "C-x g") 'magit-status)
-
-;; Scrolling
-(global-set-key "\M-n" "\C-u1\C-v")
-(global-set-key "\M-p" "\C-u1\M-v")
 
 ;; Delete all whitespace
 (global-set-key (kbd "C-x w") 'delete-horizontal-space)
