@@ -112,14 +112,6 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;; Adding clj-refactor hook
-(require 'clj-refactor)
-
-(add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               (yas-minor-mode 1)
-                               (cljr-add-keybindings-with-prefix "C-c C-n")))
-
 (add-to-list 'load-path "~/.emacs.d/vendor")
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
@@ -172,7 +164,7 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (company cider clj-refactor undo-tree cider-profile tagedit smex rainbow-delimiters projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking))))
+    (js2-mode ensime scala-mode vcl-mode markdown-mode company cider clj-refactor undo-tree cider-profile tagedit smex rainbow-delimiters projectile paredit magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -209,3 +201,5 @@
 
 ;; Pin cider to a stable version
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
